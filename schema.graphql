@@ -1,0 +1,13 @@
+type Ape @entity {
+  id: ID!
+  contentURI: String!
+  createdAt: BigInt!
+  creator: User!
+  owner: User!
+}
+
+type User @entity {
+  id: ID!
+  apes: [Ape!]! @derivedFrom(field: "owner")
+  created: [Ape!]! @derivedFrom(field: "creator")
+}
